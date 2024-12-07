@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resizer Service</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="about.html">About Us</a></li>
+				<li class="dropdown">
+					<a href="#">Download / Upload Zone</a>
+					<ul class="dropdown-menu">
+						<li><a href="upload.html">Upload Your Work</a></li>
+						<li><a href="download.html">Download Your Work</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Latest Jobs</a></li>
+				<li><a href="service.html">Services</a></li>
+				<li><a href="contact.html">Contact Us</a></li>
+			</ul>
+		</nav>
+    </header>
+    <main>
+        <section class="image-resizer">
+            <h1>Image Resizer</h1>
+            <p>Upload an image, specify the desired dimensions, and download the resized image.</p>
+            <form id="resizeForm">
+                <label for="imageUpload">Upload Image:</label>
+                <input type="file" id="imageUpload" accept="image/*" required>
+
+                <label for="width">Width (px):</label>
+                <input type="number" id="width" placeholder="Enter width" required>
+
+                <label for="height">Height (px):</label>
+                <input type="number" id="height" placeholder="Enter height" required>
+
+                <button type="submit">Resize Image</button>
+            </form>
+            <div class="output">
+                <h2>Resized Image:</h2>
+                <canvas id="canvas" style="border: 1px solid #ddd;"></canvas>
+                <br>
+                <button id="downloadBtn" style="display:none;">Download Resized Image</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>For any assistance, contact us at +91 8988888992</p>
+    </footer>
+
+    <script>
+        // Handle the form submission
+        document.getElementById("resizeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const fileInput = document.getElementById("imageUpload");
+            const width = parseInt(document.getElementById("width").value);
+            const height = parseInt(document.getElementById("height").value);
+
+            if (fileInput.files.length === 0) {
+                alert("Please upload an image!");
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const img = new Image();
+                img.src = event.target.result;
+
+                img.onload = function() {
+                    const canvas = document.getElementById("canvas");
+                    const ctx = canvas.getContext("2d");
+
+                    // Set canvas dimensions
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    // Draw resized image on the canvas
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    // Show download button
+                    const downloadBtn = document.getElementById("downloadBtn");
+                    downloadBtn.style.display = "block";
+
+                    // Enable downloading the resized image
+                    downloadBtn.onclick = function() {
+                        const link = document.createElement("a");
+                        link.download = "resized-image.png";
+                        link.href = canvas.toDataURL();
+                        link.click();
+                    };
+                };
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>

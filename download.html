@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Your Work</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li class="dropdown">
+            <a href="#">Download / Upload Zone</a>
+            <ul class="dropdown-menu">
+                <li><a href="upload.html">Upload Your Work</a></li>
+                <li><a href="download.html">Download Your Work</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Latest Jobs</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+</nav>
+    </header>
+    <main>
+        <section class="download-work">
+            <h1>Download Your Work</h1>
+            <p>Click the link below to download your file:</p>
+            <a href="/path/to/your/file.pdf" download>Download File</a>
+        </section>
+
+    </main>
+    <footer>
+        <p>Contact us at +91 8988888992 for any queries.</p>
+    </footer>
+
+    <script>
+        // Handle sign-up form submission
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+
+            alert(`Thank you for signing up, ${username}! A confirmation email has been sent to ${email}.`);
+        });
+    </script>
+</body>
+</html>

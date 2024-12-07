@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Your Work</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li class="dropdown">
+            <a href="#">Download / Upload Zone</a>
+            <ul class="dropdown-menu">
+                <li><a href="upload.html">Upload Your Work</a></li>
+                <li><a href="download.html">Download Your Work</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Latest Jobs</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+</nav>
+    </header>
+    <main>
+        <section class="upload-work">
+            <h1>Upload Your Work</h1>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <label for="file">Select File to Upload:</label>
+                <input type="file" id="file" name="file" required>
+                <button type="submit">Upload</button>
+            </form>
+        </section>
+
+        <section class="signup">
+            <h2>New Here? Sign Up Below!</h2>
+            <form id="signupForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>Contact us at +91 8988888992 for any queries.</p>
+    </footer>
+
+    <script>
+        // Handle sign-up form submission
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const email = document.getElementById("email").value;
+
+            alert(`Thank you for signing up, ${username}! A confirmation email has been sent to ${email}.`);
+        });
+    </script>
+</body>
+</html>
